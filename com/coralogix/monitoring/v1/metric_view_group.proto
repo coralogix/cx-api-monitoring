@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 package com.coralogix.monitoring.v1;
 
-message Group {
+message MetricViewGroup {
   optional google.protobuf.Int32Value id = 1;
   google.protobuf.StringValue name = 2;
   google.protobuf.StringValue aggregation = 3;

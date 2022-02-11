@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+message TreeNode {
+  Metadata metadata = 1;
+  Data data = 2;
+  repeated TreeNode children = 3;
+}
+
+message Metadata {
+  repeated google.protobuf.StringValue values_path = 1;
+  repeated google.protobuf.StringValue entities_path = 2;
+}
+
+message Data {
+  ActualState actual_state = 1;
+}
+
+message ActualState {
+  google.protobuf.Int32Value threshold = 1;
+  google.protobuf.StringValue state = 2;
+  google.protobuf.Int32Value count = 3;
+  google.protobuf.Int32Value percentage = 4;
+}
