@@ -1,0 +1,55 @@
+syntax = "proto3";
+import "com/coralogix/monitoring/v1/metric_view_group.proto";
+import "google/protobuf/wrappers.proto";
+
+package com.coralogix.monitoring.v1;
+
+service MonitoringViewsService {
+  rpc CreateView(CreateViewRequest) returns (CreateViewResponse);
+  rpc DeleteView(DeleteViewRequest) returns (DeleteViewResponse);
+  rpc UpdateView(UpdateViewRequest) returns (UpdateViewResponse);
+  rpc GetView(GetViewRequest) returns (GetViewResponse);
+}
+
+message MonitoringView {
+    google.protobuf.UInt32Value id = 1;
+    google.protobuf.StringValue name = 2;
+    google.protobuf.UInt32Value start = 3;
+    google.protobuf.UInt32Value end = 4;
+    google.protobuf.UInt32Value company_id = 5;
+    google.protobuf.StringValue user_id = 6;
+    repeated MetricViewGroup groups = 7;
+    google.protobuf.BoolValue is_public = 8;
+}
+
+message MonitoringViewResponse {
+    google.protobuf.UInt32Value view_id = 1;
+}
+
+message DeleteViewResponse {
+    google.protobuf.BoolValue result = 1;
+}
+
+message GetViewResponse {
+    MonitoringView result = 1;
+}
+
+message UpdateViewResponse {
+    MonitoringViewResponse result = 1;
+}
+
+message CreateViewResponse {
+  MonitoringViewResponse result = 1;
+}
+
+message CreateViewRequest {
+  MonitoringView monitoring_view = 1;
+}
+
+message UpdateViewRequest {
+  MonitoringView monitoring_view = 1;
+}
+
+message DeleteViewRequest {}
+
+message GetViewRequest {}
