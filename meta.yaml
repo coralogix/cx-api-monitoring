@@ -4,3 +4,5 @@ deployable_type: library
 code_language: protobuf
 tests: true
 publish: false
+test_image_tag: 1.0.0-rc12
+test_image_name: buf
