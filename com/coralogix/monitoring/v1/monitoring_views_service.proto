@@ -18,7 +18,7 @@ message MonitoringView {
     google.protobuf.UInt32Value end = 4;
     google.protobuf.UInt32Value company_id = 5;
     google.protobuf.StringValue user_id = 6;
-    repeated Group groups = 7;
+    repeated MetricViewGroup groups = 7;
     google.protobuf.BoolValue is_public = 8;
 }
 
