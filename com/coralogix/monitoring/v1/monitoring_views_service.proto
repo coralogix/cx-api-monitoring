@@ -1,14 +1,23 @@
 syntax = "proto3";
 import "com/coralogix/monitoring/v1/metric_view_group.proto";
+import "com/coralogix/monitoring/v1/audit_log.proto";
 import "google/protobuf/wrappers.proto";
 
 package com.coralogix.monitoring.v1;
 
 service MonitoringViewsService {
-  rpc CreateView(CreateViewRequest) returns (CreateViewResponse);
-  rpc DeleteView(DeleteViewRequest) returns (DeleteViewResponse);
-  rpc UpdateView(UpdateViewRequest) returns (UpdateViewResponse);
-  rpc GetView(GetViewRequest) returns (GetViewResponse);
+  rpc CreateView(CreateViewRequest) returns (CreateViewResponse) {
+    option (audit_log_description).description = "create monitoring view";
+  }
+  rpc DeleteView(DeleteViewRequest) returns (DeleteViewResponse) {
+    option (audit_log_description).description = "delete monitoring view";
+  }
+  rpc UpdateView(UpdateViewRequest) returns (UpdateViewResponse) {
+    option (audit_log_description).description = "upgrade aggregation";
+  }
+  rpc GetView(GetViewRequest) returns (GetViewResponse) {
+    option (audit_log_description).description = "get aggregation";
+  }
 }
 
 message MonitoringView {
@@ -18,7 +27,7 @@ message MonitoringView {
     google.protobuf.UInt32Value end = 4;
     google.protobuf.UInt32Value company_id = 5;
     google.protobuf.StringValue user_id = 6;
-    repeated Group groups = 7;
+    repeated MetricViewGroup groups = 7;
     google.protobuf.BoolValue is_public = 8;
 }
 

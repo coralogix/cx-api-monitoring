@@ -1,5 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
+package com.coralogix.monitoring.v1;
 
 message TreeNode {
   Metadata metadata = 1;

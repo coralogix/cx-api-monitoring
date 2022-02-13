@@ -1,12 +1,15 @@
 syntax = "proto3";
 import "com/coralogix/monitoring/v1/metric_view_group.proto";
 import "com/coralogix/monitoring/v1/time_series_tree.proto";
+import "com/coralogix/monitoring/v1/audit_log.proto";
 import "google/protobuf/wrappers.proto";
 
 package com.coralogix.monitoring.v1;
 
 service MetricViewService {
-  rpc Aggregate(AggregateRequest) returns (AggregateResponse);
+  rpc Aggregate(AggregateRequest) returns (AggregateResponse) {
+    option (audit_log_description).description = "get aggregation";
+  }
 }
 
 message AggregateRequest {
